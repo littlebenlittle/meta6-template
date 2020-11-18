@@ -1,0 +1,17 @@
+{
+  "meta-version": "0",
+  "name": "{{ module-name }}",
+  "version": "0.0.0",
+  "auth": "github:{{ author-github }}",
+  "description": "{{ description }}",
+  "source-url": "https://github.com/{{ author-github }}/{{ module-name-urlsafe }}.git",
+  "perl": "6.d",
+  "author": "{{ author-name }} <{{ author-email }}>",
+  "tags": [
+	  {{ tags }}
+  ],
+  "license": "Artistic-2.0",
+  "provides": {
+    {{ provides }}
+  }
+}
