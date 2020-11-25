@@ -1,0 +1,11 @@
+{
+  "meta-version": "0",
+  "name": "{{ name }}",
+  "version": "{{ version }}",
+  "auth": "github:{{ author.github }}",
+  "description": "{{ description }}",
+  "source-url": "https://github.com/{{ author.github }}/{{ url-safe }}.git",
+  "perl": "6.d",
+  "authors": [ "{{ author.name }} <{{ author.email }}>" ],
+  "license": "Artistic-2.0"
+}

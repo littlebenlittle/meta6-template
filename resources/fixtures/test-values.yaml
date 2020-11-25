@@ -1,0 +1,8 @@
+name: Some::Module
+url-safe: raku-some-modules
+version: 2.1.13
+description: a fake module
+author:
+  name: Noah Bodi
+  email: noone@nowhere.net
+  github: notagithubuseraccount

@@ -1,4 +1,5 @@
 
-# {{ module-name }}
+# {{ name }}
 
 {{ description }}
+

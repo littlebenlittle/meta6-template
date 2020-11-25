@@ -8,10 +8,17 @@
   "perl": "6.d",
   "author": "Ben Little <ben.little@benlittle.dev>",
   "tags": [
-	  "meta6", "modules"
+    "meta6", "modules"
   ],
   "license": "Artistic-2.0",
   "provides": {
     "META6::Template": "lib/META6/Template.rakumod"
-  }
+  },
+  "depends" : [
+    "META6::Query",
+    "YAMLish"
+  ],
+  "test-depends" : [
+    "FileSystem::Helpers"
+  ]
 }
