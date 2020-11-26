@@ -1,16 +1,18 @@
 
-unit package META6::Template:auth<github:littlebenlittle>:ver<0.0.0>;
+unit package META6::Template:auth<github:littlebenlittle>:ver<0.1.0>;
 
 use Stache;
 use YAMLish;
-use META6::Query;
+use FileSystem::Helpers;
 
-my $root-dir = META6::Query::root-dir $?FILE;
-my $tmpl-dir = $root-dir.add('resources').add('TEMPLATE');
-
-our sub generate(IO() $dest, IO() $values) {
-    my %ctx = load-yaml $values.slurp;
-    Stache::render-dir($tmpl-dir, $dest, |%ctx);
+our sub generate(IO() $dest, *%ctx) {
+    FileSystem::Helpers::temp-dir {
+        $*tmpdir.add($_).spurt: %?RESOURCES{"templates/$_"}.slurp
+            for ('META6.json', 'README.md', 'LICENSE');
+        mkdir $*tmpdir.add: $_
+            for ('lib', 't');
+        Stache::render-dir($*tmpdir, $dest, |%ctx);
+    };
 }
 
 sub MAIN(
@@ -18,5 +20,6 @@ sub MAIN(
     IO() :$values, #=use values from this yaml file
 ) is export(:MAIN) {
     die 'user prompt not implemented, use --values' unless $values;
-    generate($dest, $values);
+    my %ctx = load-yaml $values.slurp;
+    generate($dest, |%ctx);
 }

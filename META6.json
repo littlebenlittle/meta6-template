@@ -1,7 +1,7 @@
 {
   "meta-version": "0",
   "name": "META6::Template",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "auth": "github:littlebenlittle",
   "description": "generate meta6-compliant project stubs",
   "source-url": "https://github.com/littlebenlittle/meta6-template.git",
@@ -15,10 +15,16 @@
     "META6::Template": "lib/META6/Template.rakumod"
   },
   "depends" : [
-    "META6::Query",
     "YAMLish"
   ],
   "test-depends" : [
+    "META6::Query",
     "FileSystem::Helpers"
+  ],
+  "resources": [
+    "templates/META6.json",
+    "templates/LICENSE",
+    "templates/README.md",
+    "test-values.yaml"
   ]
 }

@@ -6,14 +6,18 @@ use META6;
 use META6::Query;
 use META6::Template;
 use FileSystem::Helpers;
+use YAMLish;
 
 my $root-dir = META6::Query::root-dir $?FILE;
-my $fixt-dir = $root-dir.add('resources').add('fixtures');
+my %ctx = load-yaml
+  $root-dir.add('resources')
+           .add('test-values.yaml')
+           .slurp;
 
 plan 5;
 
 FileSystem::Helpers::temp-dir {
-    META6::Template::generate($*tmpdir, $fixt-dir.add('test-values.yaml'));
+    META6::Template::generate($*tmpdir, |%ctx);
     say $*tmpdir.dir;
     my $file = $*tmpdir.add: 'META6.json';
     ok $file.f, 'META6.json exists';
